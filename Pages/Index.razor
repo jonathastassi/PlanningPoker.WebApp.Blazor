@@ -1,5 +1,39 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<div class="grid-container @(NumberSelected == null ? "" : "flipped")">
+    <div class="grid-container-inner">
+        <div class="grid-cards">
+            @for (int j = 0; j < Fibonacci.Count; j++)
+            {
+                int numberSelected = Fibonacci[j];
+                <button @onclick="@(e => selectNumber(numberSelected))">@numberSelected</button>
+            }
+            </div>
+            <div class="grid-card-selected" @onclick="@(e => selectNumber(null))">
+                <button>@NumberSelected</button>
+            </div>
+        </div>
+    </div>
 
-Welcome to your new app.
+    @code {
+    List<int> Fibonacci = new List<int>() { 0, 1 };
+    int? NumberSelected = null;
+
+    protected override void OnInitialized()
+    {
+        this.generateFibonacci();
+    }
+
+    public void generateFibonacci()
+    {
+        for (int i = 2; i < 12; i++)
+        {
+            Fibonacci.Add((Fibonacci[i - 2] == 0 ? 1 : Fibonacci[i - 2]) + Fibonacci[i - 1]);
+        }
+    }
+
+    public void selectNumber(int? numberSelected)
+    {
+        this.NumberSelected = numberSelected;
+    }
+}
