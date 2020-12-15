@@ -1,10 +1,10 @@
 {
-  "name": "PlanningPoker.WebApp",
-  "short_name": "PlanningPoker.WebApp",
+  "name": "Planning Poker",
+  "short_name": "Planning Poker",
   "start_url": "https://jonathastassi.github.io/PlanningPoker.WebApp.Blazor",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#03173d",
+  "background_color": "#000",
+  "theme_color": "#ff6600",
   "icons": [
     {
       "src": "icon-512.png",
