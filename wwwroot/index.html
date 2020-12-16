@@ -10,10 +10,26 @@
     <link href="PlanningPoker.WebApp.styles.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <style> 
+        #loading {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            color: #ff6600;
+            font-size: 2.2rem;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div id="loading">
+            Aguarde...
+        </div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
