@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Firebase Hosting
 
 # Run workflow on every push to the master branch
 on:
@@ -27,32 +27,12 @@ jobs:
     - name: copy index.html to 404.html
       run: cp release/wwwroot/index.html release/wwwroot/404.html
 
+    # Deploy files in Firebase Hosting
     - uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         repoToken: '${{ secrets.GITHUB_TOKEN }}'
         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLANNINGPOKER_WEBAPP_BLAZOR }}'
-<<<<<<< HEAD
         channelId: live
         projectId: planningpoker-webapp-blazor
       env:
         FIREBASE_CLI_PREVIEWS: hostingchannels
-=======
-        projectId: planningpoker-webapp-blazor
-      env:
-        FIREBASE_CLI_PREVIEWS: hostingchannels
-
-   # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
-    # - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
-    #   run: sed -i 's/<base href="\/" \/>/<base href="\/PlanningPoker.WebApp.Blazor\/" \/>/g' release/wwwroot/index.html
-      
-    # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
-    # - name: Add .nojekyll file
-    #   run: touch release/wwwroot/.nojekyll
-      
-    # - name: Commit wwwroot to GitHub Pages
-    #   uses: JamesIves/github-pages-deploy-action@3.7.1
-    #   with:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     BRANCH: gh-pages # The branch the action should deploy to.
-    #     FOLDER: release/wwwroot
->>>>>>> cdb17b9161c6e5c1d542c90f48cf481c9058ca99
